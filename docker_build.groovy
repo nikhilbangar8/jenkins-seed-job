@@ -1,6 +1,6 @@
 job('Docker Build Job') {
   
     steps {
-        shell('docker --version')
+        shell('sudo docker --version')
     }
 }
