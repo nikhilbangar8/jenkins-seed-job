@@ -1,0 +1,6 @@
+job('Docker Deploy container Job') {
+  
+    steps {
+        shell('sudo docker --version')
+    }
+}
