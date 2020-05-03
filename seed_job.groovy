@@ -17,6 +17,7 @@ pipelineJob('Pipeline-Job') {
     cps {
       script('''
           pipeline {
+          agent any
                 stages {
                     stage('Stage 1') {
                         steps {
