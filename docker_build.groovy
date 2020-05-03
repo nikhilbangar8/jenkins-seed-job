@@ -7,13 +7,13 @@ pipelineJob('Docker Build Job') {
                 stages {
                     stage('Checking Docker Version') {
                         steps {
-                            sudo docker --version
+                            shell('sudo docker --version')
                         }
                     }
                     stage('Starting Linux image in Docker') {
                         steps {
                             echo 'logic'
-                            echo pwd
+                            shell('echo pwd')
                         }
                     }
                     stage('Build Docker Image for Tomcat Server') {
