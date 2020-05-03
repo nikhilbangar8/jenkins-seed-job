@@ -7,7 +7,8 @@ pipelineJob('Docker Build Job') {
                 stages {
                     stage('Checking Docker Version') {
                         steps {
-                            sh(script: 'sudo docker --version', returnStdout: true)
+                            def ret = sh(script: 'sudo docker --version', returnStdout: true)
+                            println ret
                             shell('sudo docker --version')
                         }
                     }
