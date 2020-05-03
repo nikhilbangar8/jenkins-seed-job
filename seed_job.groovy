@@ -30,7 +30,7 @@ pipelineJob('Pipeline-Job') {
                     }
                 }
             }
-        })
+        )
       sandbox()
     }
   }
