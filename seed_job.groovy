@@ -15,7 +15,7 @@ job('My-Second-Job') {
 pipelineJob('Pipeline-Job') {
   definition {
     cps {
-      script(
+      script('''
           pipeline {
                 stages {
                     stage('Stage 1') {
@@ -30,7 +30,7 @@ pipelineJob('Pipeline-Job') {
                     }
                 }
             }
-        )
+        ''')
       sandbox()
     }
   }
