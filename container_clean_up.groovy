@@ -9,7 +9,7 @@ pipelineJob('Container Cleanup') {
                         steps {
                                 echo "Stopping all Containers"
                                 sh "sudo docker ps -a -q"
-                                shell("sudo docker stop '$(docker ps -a -q)'")
+                                shell("sudo docker stop $(docker ps -a -q)")
                         }
                         
                     }
