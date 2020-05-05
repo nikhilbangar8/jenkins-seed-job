@@ -9,7 +9,8 @@ pipelineJob('Container Cleanup') {
                         steps {
                                 echo "Stopping all Containers"
                                 sh "sudo docker ps -a -q"
-                                def ids = sh (script:"docker pa -a -q", returnStdout: true).trim()
+                                def ids
+                                ids = sh (script:"docker pa -a -q", returnStdout: true).trim()
                                 echo "${ids}"
                                 sh "sudo docker stop ${ids}"
                         }
@@ -19,7 +20,8 @@ pipelineJob('Container Cleanup') {
                         steps {
                                 echo "Stopping all Containers"
                                 sh "sudo docker ps -a -q"
-                                def ids = sh (script:"docker pa -a -q", returnStdout: true).trim()
+                                def ids 
+                                ids = sh (script:"docker pa -a -q", returnStdout: true).trim()
                                 echo "${ids}"
                                 sh "sudo docker rm ${ids}"
                         }
