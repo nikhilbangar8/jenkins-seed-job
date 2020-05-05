@@ -1,17 +1,17 @@
-job('MyfirstJob') {
-    
-    steps {
-        shell('echo First Job START')
-    }
-}
+//job('MyfirstJob') {
+ //   
+ //   steps {
+ //       shell('echo First Job START')
+ //   }
+//}
 
-job('My-Second-Job') {
+//job('My-Second-Job') {
 
-    steps {
-        shell('echo second Job START')
-    }
-}
-
+//    steps {
+//        shell('echo second Job START')
+//    }
+//}
+//
 pipelineJob('Pipeline-Job') {
   definition {
     cps {
