@@ -32,7 +32,7 @@ pipelineJob('Docker Build Job') {
                     stage('Build Docker Image for Tomcat Server') {
                         steps {
                             echo 'Building Docker conatiner image with Name ${dockerimagename}'
-                            sh "docker build -t ${dockerimagename} ."
+                            sh "sudo docker build -t ${dockerimagename} ."
                             echo "image built successfully"
                         }
                     }
