@@ -6,9 +6,8 @@ pipelineJob('Docker Build Job') {
           agent any
                 stages {
                     stage('Checking Docker Version') {
-                        steps {
-                            shell('sudo docker --version')
-                        }
+                        echo "Checking Docker Version"
+                        sh "docker --version"
                     }
                     stage('Starting Linux image in Docker') {
                         steps {
