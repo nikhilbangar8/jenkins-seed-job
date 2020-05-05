@@ -3,6 +3,7 @@ def dockerfileRepo="https://github.com/nikhilbangar8/tomcat_docker.git"
 pipelineJob('Docker Build Job') {
   parameters{
     stringParam('dockerfileRepo',dockerfileRepo,'')
+    stringParam('dockerimagename','mytomcat','')
   }
   definition {
     cps {
@@ -30,12 +31,15 @@ pipelineJob('Docker Build Job') {
                     }
                     stage('Build Docker Image for Tomcat Server') {
                         steps {
-                            echo 'logic'
+                            echo 'Building Docker conatiner image with Name ${dockerimagename}'
+                            sh "docker build -t ${dockerimagename} ."
+                            echo "image built successfully"
                         }
                     }
                     stage('End Of the Stage') {
                         steps {
-                            echo 'logic'
+                            echo 'Pipeline Completed'
+                            sh "docker images"
                         }
                     }
                 }
