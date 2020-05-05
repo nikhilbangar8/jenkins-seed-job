@@ -20,7 +20,7 @@ pipelineJob('Docker Deploy Containe Job') {
                     stage('Deploying Container') {
                         steps {
                             echo 'Deploying Container with image name ${tomcatdockerImage}'
-                            sh "docker run --name ${containerName} -p ${port}:8080 -itd ${tomcatdockerImage}"
+                            sh "sudo docker run --name ${containerName} -p ${port}:8080 -itd ${tomcatdockerImage}"
                             echo "Tomcat Container Deployed Successfully on port ${port} with container-name ${containerName}"
                         }
                     }
