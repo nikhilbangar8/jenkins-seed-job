@@ -36,7 +36,7 @@ pipelineJob('Docker Build Job') {
                             echo "image built successfully"
                         }
                     }
-                    stage('End Of the Stage') {
+                    stage('Last stage') {
                         steps {
                             echo 'Pipeline Completed'
                             sh "docker images"
