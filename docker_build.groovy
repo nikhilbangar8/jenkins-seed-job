@@ -21,7 +21,7 @@ pipelineJob('Docker Build Job') {
                     stage('Retrieving dockerfile for Tomcat Server') {
                         steps {
                             echo 'Cloning Dockerfile Repo for Tomcat Server'
-                            sh "[ -d './tomcat_docker' ] && 'rm -r ./tomcat_docker'"
+                            sh "[ -d ./tomcat_docker ] && rm -r ./tomcat_docker || echo 'Directory Not Present'"
                             sh "git clone ${dockerfileRepo}"
                             sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
                             sh "rm -r ./tomcat_docker"
