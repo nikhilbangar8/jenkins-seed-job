@@ -9,7 +9,7 @@ pipelineJob('Container Cleanup') {
                         steps {
                                 echo "Stopping all Containers"
                                 sh "sudo docker ps -a -q"
-                                def ids
+                                def ids = ""
                                 ids = sh (script:"docker pa -a -q", returnStdout: true).trim()
                                 echo "${ids}"
                                 sh "sudo docker stop ${ids}"
