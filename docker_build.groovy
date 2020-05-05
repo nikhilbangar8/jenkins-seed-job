@@ -22,7 +22,7 @@ pipelineJob('Docker Build Job') {
                             echo 'Cloning Dockerfile Repo for Tomcat Server'
                             sh "git clone ${dockerfileRepo}"
                             sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
-                            sh "rmdir ./tomcat_docker"
+                            sh "rm -r ./tomcat_docker"
                             echo "Docker File Retrieve Completed"
                             sh "ls"
                         }
