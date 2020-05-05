@@ -1,4 +1,9 @@
+def dockerfileRepo="https://github.com/nikhilbangar8/tomcat_docker.git"
+
 pipelineJob('Docker Build Job') {
+  parameters{
+    stringParam('dockerfileRepo',dockerfileRepo,'')
+  }
   definition {
     cps {
       script('''
@@ -12,10 +17,14 @@ pipelineJob('Docker Build Job') {
                         }
                         
                     }
-                    stage('Starting Linux image in Docker') {
+                    stage('Retrieving dockerfile for Tomcat Server') {
                         steps {
-                            echo 'logic'
-                            shell('echo pwd')
+                            echo 'Cloning Dockerfile Repo for Tomcat Server'
+                            sh "git clone ${dockerfileRepo}"
+                            sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
+                            sh "rmdir ./tomcat_docker"
+                            echo "Docker File Retrieve Completed"
+                            sh "ls"
                         }
                     }
                     stage('Build Docker Image for Tomcat Server') {
