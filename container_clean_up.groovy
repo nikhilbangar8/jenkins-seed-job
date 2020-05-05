@@ -12,7 +12,8 @@ pipelineJob('Container Cleanup') {
                                 sh "sudo docker stop ${('docker ps -a -q')}"
                         }
                         
-                    }stage('Stopping all Containers') {
+                    }
+                    stage('Removing all Containers') {
                         steps {
                                 echo "Removing all Containers"
                                 sh "sudo docker rm ${('docker ps -a -q')}"
