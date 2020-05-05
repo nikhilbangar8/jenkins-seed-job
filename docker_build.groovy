@@ -39,7 +39,7 @@ pipelineJob('Docker Build Job') {
                     stage('Final stage') {
                         steps {
                             echo 'Pipeline Completed'
-                            sh "sudo docker images | ${dockerimagename}"
+                            sh "sudo docker images"
                         }
                     }
                 }
