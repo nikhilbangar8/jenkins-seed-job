@@ -1,4 +1,4 @@
-pipelineJob('Docker Build Job') {
+pipelineJob('Docker Deploy Containe Job') {
   parameters{
     stringParam('tomcatdockerImage','mytomcat','')
     stringParam('port','8081','')
