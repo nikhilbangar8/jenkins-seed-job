@@ -25,7 +25,6 @@ pipelineJob('RnDX Django App Build') {
                             echo 'Cloning Dockerfile and App Repo for Django Service'
                             sh "[ -d ./RndxDjangoApp ] && rm -r ./RndxDjangoApp || echo 'Directory Not Present'"
                             sh "git clone ${dockerfileRepo}"
-                            //sh "mv ./RndxDjangoApp/Dockerfile ./Dockerfile"
                             echo "Docker File Retrieve Completed"
                         }
                     }
@@ -33,7 +32,10 @@ pipelineJob('RnDX Django App Build') {
                         steps {
                             sh "ls"
                             echo "Building Docker conatiner image with Name ${dockerimagename}"
-                            sh "sudo -s docker build -t ${dockerimagename} ."
+                            dir('RndxDjangoApp'){
+                              sh "sudo -s docker build -t ${dockerimagename} ."
+                            }
+                            
                             echo "image built successfully"
                         }
                     }
