@@ -23,8 +23,11 @@ pipelineJob('RnDX Django App Build') {
                         steps {
                             echo ''
                             echo 'Cloning Dockerfile and App Repo for Django Service'
-                            sh "[ -d ./tomcat_docker ] && rm -r ./tomcat_docker || echo 'Directory Not Present'"
+                            sh "[ -d ./RndxDjangoApp ] && rm -r ./RndxDjangoApp || echo 'Directory Not Present'"
                             sh "git clone ${dockerfileRepo}"
+                            sh "pwd"
+                            sh "cd RndxDjangoApp"
+                            sh "ll"
                             //sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
                             //sh "rm -r ./tomcat_docker"
                             echo "Docker File Retrieve Completed"
@@ -34,7 +37,7 @@ pipelineJob('RnDX Django App Build') {
                     }
                     stage('Build Docker Image for Django Server') {
                         steps {
-                            echo 'Building Docker conatiner image with Name ${dockerimagename}'
+                            echo "Building Docker conatiner image with Name ${dockerimagename}"
                             sh "sudo -s docker build -t ${dockerimagename} ."
                             echo "image built successfully"
                         }
