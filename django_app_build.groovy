@@ -28,6 +28,7 @@ pipelineJob('RnDX Django App Build') {
                             sh "pwd"
                             sh "cd RndxDjangoApp"
                             sh "ls -lrt"
+                            cd "RndxDjangoApp"
                             sh "pwd"
                             //sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
                             //sh "rm -r ./tomcat_docker"
