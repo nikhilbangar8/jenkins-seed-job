@@ -3,7 +3,7 @@ def dockerfileRepo="https://github.com/nikhilbangar8/tomcat_docker.git"
 pipelineJob('RnDX Django App Build') {
   parameters{
     stringParam('dockerfilename','Dockerfile','')
-    stringParam('dockerfileRepo','Dockerfile','')
+    stringParam('dockerfileRepo','dockerfileRepo','')
     stringParam('dockerimagename','rndx_django','')
   }
   definition {
@@ -22,6 +22,12 @@ pipelineJob('RnDX Django App Build') {
                     stage('Retrieving dockerfile for Django Service') {
                         steps {
                             echo ''
+                            echo 'Cloning Dockerfile and App Repo for Django Service'
+                            sh "[ -d ./tomcat_docker ] && rm -r ./tomcat_docker || echo 'Directory Not Present'"
+                            sh "git clone ${dockerfileRepo}"
+                            //sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
+                            //sh "rm -r ./tomcat_docker"
+                            echo "Docker File Retrieve Completed"
                             sh "pwd"
                             sh "ls"
                         }
