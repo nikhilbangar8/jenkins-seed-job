@@ -28,15 +28,14 @@ pipelineJob('RnDX Django App Build') {
                             sh "ls"
                             sh "pwd"
                             sh "ls RndxDjangoApp/"
-                            //sh "mv ./RndxDjangoApp/Dockerfile ./Dockerfile"
-                            //sh "rm -r ./tomcat_docker"
+                            sh "mv ./RndxDjangoApp/Dockerfile ./Dockerfile"
                             echo "Docker File Retrieve Completed"
-                            sh "pwd"
                             sh "ls"
                         }
                     }
                     stage('Build Docker Image for Django Server') {
                         steps {
+                            sh "ls"
                             echo "Building Docker conatiner image with Name ${dockerimagename}"
                             sh "sudo -s docker build -t ${dockerimagename} ."
                             echo "image built successfully"
