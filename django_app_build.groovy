@@ -26,7 +26,7 @@ pipelineJob('RnDX Django App Build') {
                             sh "[ -d ./RndxDjangoApp ] && rm -r ./RndxDjangoApp || echo 'Directory Not Present'"
                             sh "git clone ${dockerfileRepo}"
                             sh "pwd"
-                            sh "cd RndxDjangoApp"
+                            sh "cd ./RndxDjangoApp"
                             sh "ls"
                             sh "pwd"
                             //sh "mv ./tomcat_docker/Dockerfile ./Dockerfile"
