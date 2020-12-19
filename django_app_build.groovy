@@ -1,9 +1,9 @@
-def dockerfileRepo="https://github.com/nikhilbangar8/tomcat_docker.git"
+def dockerfileRepo="https://github.com/nikhilbangar8/RndxDjangoApp.git"
 
 pipelineJob('RnDX Django App Build') {
   parameters{
     stringParam('dockerfilename','Dockerfile','')
-    stringParam('dockerfileRepo','dockerfileRepo','')
+    stringParam('dockerfileRepo',dockerfileRepo,'')
     stringParam('dockerimagename','rndx_django','')
   }
   definition {
