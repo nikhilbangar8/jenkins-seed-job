@@ -5,6 +5,8 @@ pipelineJob('RnDX Django App Build') {
     stringParam('dockerfilename','Dockerfile','')
     stringParam('dockerfileRepo',dockerfileRepo,'')
     stringParam('dockerimagename','rndx_django','')
+    stringParam('app_version','1','Application Version')
+    stringParam('ECR_Repo','211448159615.dkr.ecr.us-east-1.amazonaws.com/rndx','ECR Repository Link')
   }
   definition {
     cps {
@@ -31,18 +33,20 @@ pipelineJob('RnDX Django App Build') {
                     stage('Build Docker Image for Django Server') {
                         steps {
                             sh "ls"
-                            echo "Building Docker conatiner image with Name ${dockerimagename}"
+                            echo "Building Docker conatiner image with Name ${dockerimagename} with version ${app_version}"
                             dir('RndxDjangoApp'){
-                              sh "sudo -s docker build -t ${dockerimagename} ."
+                              sh "sudo -s docker build -t ${dockerimagename}:${app_version} ."
                             }
                             
                             echo "image built successfully"
                         }
                     }
-                    stage('Final stage') {
+                    stage('Uploading to ECR Repo') {
                         steps {
-                            echo 'Pipeline Completed'
                             sh "sudo docker images"
+                            sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 211448159615.dkr.ecr.us-east-1.amazonaws.com"
+                            sh "docker tag ${dockerimagename}:${app_version} ${ECR_Repo}:${app_version}"
+                            echo "Image Uploaded to ECR Repo"
                         }
                     }
                 }
