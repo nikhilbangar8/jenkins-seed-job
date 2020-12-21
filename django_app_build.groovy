@@ -44,7 +44,7 @@ pipelineJob('RnDX Django App Build') {
                     stage('Uploading to ECR Repo') {
                         steps {
                             sh "sudo docker images"
-                            sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 211448159615.dkr.ecr.us-east-1.amazonaws.com"
+                            //sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 211448159615.dkr.ecr.us-east-1.amazonaws.com"
                             sh "docker tag ${dockerimagename}:${app_version} ${ECR_Repo}:${app_version}"
                             echo "Image Uploaded to ECR Repo"
                         }
