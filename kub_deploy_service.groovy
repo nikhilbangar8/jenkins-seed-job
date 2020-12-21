@@ -27,20 +27,20 @@ pipelineJob('MIcro Deploy Job') {
                     stage('Checking Cluster Status') {
                         steps {
                             echo 'getting Node Info'
-                            sh "kubectl get nodes"
+                            sh "sudo kubectl get nodes"
                             echo 'Getting Services Info'
-                            sh "kubectl get svc"
+                            sh "sudo kubectl get svc"
                         }
                     }
                     stage('Deploying Services') {
                         steps {
                             echo "Deployment Config"
-                            sh "kubectl apply -f  ./rndxdjango_kubeconfig/${deploy_conf_file}"
+                            sh "sudo kubectl apply -f  ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             echo "Service Config"
-                            sh "kubectl apply -f  ./rndxdjango_kubeconfig/${Serv_conf_file}"
+                            sh "sudo kubectl apply -f  ./rndxdjango_kubeconfig/${Serv_conf_file}"
 
-                            sh "kubectl get services -o wide"
-                            sh "kubectl describe svc rndxdjango"
+                            sh "sudo kubectl get services -o wide"
+                            sh "sudo kubectl describe svc rndxdjango"
                             echo "Pipeline Completed"
                         }
                     }
