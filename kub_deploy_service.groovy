@@ -16,7 +16,7 @@ pipelineJob('MIcro Deploy Job') {
                     stage('Retrieve config Files for Depoyment') {
                         steps {
                               echo "checking Version" 
-                              sh "kubectl --version -client"
+                              sh "kubectl version --short --client"
                               echo 'Cloning repo of config files'
                               sh "[ -d ./rndxdjango_kubeconfig ] && rm -r ./rndxdjango_kubeconfig || echo 'Directory Not Present'"
                               sh "git clone ${GitRepo}"
