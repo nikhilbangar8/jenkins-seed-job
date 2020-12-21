@@ -1,7 +1,7 @@
-pipelineJob('Docker Deploy Container Job') {
+pipelineJob('MIcro Deploy Job') {
   parameters{
-    stringParam('tomcatdockerImage','mytomcat','')
-    stringParam('port','8081','')
+    stringParam('EcrRepo','','')
+    stringParam('GitRepo','','')
     stringParam('containerName','mytomcatcontainer','')
   }
   definition {
