@@ -35,9 +35,12 @@ pipelineJob('MIcro Deploy Job') {
                     stage('Deploying Services') {
                         steps {
                             echo "Deployment Config"
-                            sh "kubectl apply -f  ./rndxdjango_kubeconfig/rndx_micro.yaml"
+                            sh "kubectl apply -f  ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             echo "Service Config"
-                            sh "kubectl apply -f  ./rndxdjango_kubeconfig/rndx_micro-svc.yaml"
+                            sh "kubectl apply -f  ./rndxdjango_kubeconfig/${Serv_conf_file}"
+
+                            sh "kubectl get services -o wide"
+                            sh "kubectl describe svc rndxdjango"
                             echo "Pipeline Completed"
                         }
                     }
