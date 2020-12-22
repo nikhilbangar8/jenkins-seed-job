@@ -5,6 +5,7 @@ pipelineJob('MIcro Deploy Job') {
     stringParam('Serv_conf_file','rndx_micro-svc.yaml','File name for Service')
     stringParam('deploy_conf_file','rndx_micro.yaml','File Name for Deployment')
     stringParam('replica','2','Number of Replicas')
+    stringParam('image','211448159615.dkr.ecr.us-east-1.amazonaws.com/rndx_django:2','ECR Registry Url')
 
   }
   definition {
