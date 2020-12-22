@@ -5,7 +5,9 @@ pipelineJob('MIcro Deploy Job') {
     stringParam('Serv_conf_file','rndx_micro-svc.yaml','File name for Service')
     stringParam('deploy_conf_file','rndx_micro.yaml','File Name for Deployment')
     stringParam('replica','2','Number of Replicas')
-    stringParam('image','211448159615.dkr.ecr.us-east-1.amazonaws.com/rndx_django:2','ECR Registry Url')
+    stringParam('image','211448159615.dkr.ecr.us-east-1.amazonaws.com/rndx_django','ECR Registry Url image')
+    stringParam('image_tag','2','image Tag')
+    
 
   }
   definition {
@@ -36,7 +38,7 @@ pipelineJob('MIcro Deploy Job') {
                     stage('Deploying Services') {
                         steps {
                             echo "Deployment Config"
-                            sh "sed -i 's/<docker_image>/${image}/g' ./rndxdjango_kubeconfig/${deploy_conf_file}"
+                            sh "sed -i 's/<tag>/${image_tag}/g' ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             sh "cat ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             sh "sudo kubectl apply -f  ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             echo "Service Config"
