@@ -36,6 +36,8 @@ pipelineJob('MIcro Deploy Job') {
                     stage('Deploying Services') {
                         steps {
                             echo "Deployment Config"
+                            sh "sed -i 's/<docker_image>/${image}/g' ./rndxdjango_kubeconfig/${deploy_conf_file}"
+                            sh "cat ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             sh "sudo kubectl apply -f  ./rndxdjango_kubeconfig/${deploy_conf_file}"
                             echo "Service Config"
                             sh "sudo kubectl apply -f  ./rndxdjango_kubeconfig/${Serv_conf_file}"
