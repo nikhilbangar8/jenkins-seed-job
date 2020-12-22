@@ -4,7 +4,7 @@ pipelineJob('RnDX Django App Build') {
   parameters{
     stringParam('dockerfilename','Dockerfile','')
     stringParam('dockerfileRepo',dockerfileRepo,'')
-    stringParam('dockerimagename','rndx_django','')
+    stringParam('dockerimagename','rndx','')
     stringParam('app_version','1','Application Version')
     stringParam('ECR_Repo','211448159615.dkr.ecr.us-east-1.amazonaws.com/rndx','ECR Repository Link')
   }
